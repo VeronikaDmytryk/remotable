@@ -1,0 +1,123 @@
+@import '../../global';
+
+.overlay {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: $overlayColor;
+    z-index: 99;
+    background-blend-mode: multiply;
+    text-align: center;
+}
+
+.modal{
+    display: inline-block;
+    width: 620px;
+    position: fixed;
+    top: 10vh;
+    left: 0;
+    right: 0;
+    bottom: auto;
+    margin: 0 auto;
+    background: #fff;
+    z-index: 100;
+    padding: 50px 40px 30px 40px;
+    border-radius: $borderRadius;
+    h2{
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: $textColor;
+    }
+    .modal-body{
+        text-align: center;
+        font-size: 16px;
+        padding: 15px 0;
+        input[type=text], input[type=datetime-local], input[type=number], select{
+            width: 100%;
+            color: $textColor;
+            padding: 8px;
+            border-radius: $borderRadius;
+            border: $inputBorder;
+            outline: none;
+        }
+        input[type=radio]{
+            opacity: 0;
+            position: absolute;
+            left: -99999px;
+        }
+        input.error{
+            border: 1px solid $red;
+            transition: all 0.5s ease;
+        }
+        input::placeholder{
+            color: $inputBorder;
+        }
+        label{
+            border-radius: 4px;
+            line-height: 30px;
+            margin: 5px;
+            padding: 0 10px;
+            transition: all 0.2s ease;
+        }
+        label.online{
+            border: 1px solid $blue;
+            color: $blue;
+            cursor: pointer;
+        }
+        label.offline{
+            border: 1px solid $green;
+            color: $green;
+            cursor: pointer;
+        }
+        input[type=radio]:checked + label.online {
+            color: #fff;
+            background: $blue;
+        }
+        input[type=radio]:checked + label.offline {
+            color: #fff;
+            background: $green;
+        }
+        p {
+            display: flex;
+            text-align: left;
+            span {
+                padding-left: 20px;
+                width: 60%;
+            }
+            span.text{
+                padding-left: 15px;
+                line-height: 40px;
+                display: inline-block;
+                width: 40%;
+            }
+            .positionNumber{
+                width: 22%;
+            }
+            .positionName {
+                width: 76%;
+            }
+        }
+    }
+    .modal-buttons{
+        text-align: right;
+        .button{
+            padding: 10px 15px;
+            display: inline-block;
+            border-radius: 4px;
+            color: #fff;
+            letter-spacing: 0.075em;
+        }
+        .cancel-button{
+            background: $red;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .save-button{
+            background: $blue;
+            cursor: pointer;
+        }
+    }
+}

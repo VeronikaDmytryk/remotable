@@ -1,0 +1,136 @@
+.candidate-page{
+    overflow-x: hidden;
+    margin-left: 70px;
+    margin-top: 60px;
+    padding: 30px 15px 20px 30px;
+    .button-menu {
+        display: block;
+        .back-button{
+            cursor: pointer;
+            padding: 10px 15px;
+            display: inline-block;
+            border-radius: 4px;
+            color: #fff;
+            background: #00aedc;
+            letter-spacing: 0.075em;
+            margin-bottom: 25px;
+        }
+    }
+
+    .left-section {
+        width: auto;
+        float: left;
+        .photo {
+            display: block;
+            position: relative;
+            width: 200px;
+            height: 250px;
+            img{
+                position: absolute;
+                width: 200px;
+                clip: rect(0px,200px,250px,0px);
+            }
+        }
+        .links {
+            a {
+                display: block;
+                padding: 10px 0;
+                i {
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+    .main-info {
+        overflow: hidden;
+        padding: 0 50px;
+        .candidateName {
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0 0 20px 0;
+            color: rgb(49, 49, 49);
+        }
+        .position {
+            margin-top: 0;
+            font-size: 14px;
+            color: rgb(70, 70, 70);
+        }
+        .location {
+            margin-top: 15px;
+            color: rgb(109, 109, 109);
+        }
+        .experienceAndEducation {
+            display: block;
+            width: 100%;
+            .education {
+                width: 50%;
+                display: block;
+                float: left;
+                h3{
+                    font-weight: 600;
+                    margin-bottom: 20px;
+                }
+                ul{
+                    padding: 0;
+                    li{
+                        display: block;
+                        margin-bottom: 15px;
+                        span {
+                            display: block;
+                        }
+                        .collegeName {
+                            font-size: 16px;
+                            font-weight: 600;
+                            color: rgb(68, 68, 68);;
+                        }
+                    }
+                }
+            }
+            .experience {
+                width: 50%;
+                display: block;
+                float: left;
+                h3{
+                    font-weight: 600;
+                    margin-bottom: 20px;
+                }
+                ul{
+                    padding: 0;
+                    li{
+                        display: block;
+                        margin-bottom: 15px;
+                        span {
+                            display: block;
+                        }
+                        .previousPosition {
+                            font-size: 16px;
+                            font-weight: 600;
+                            color: rgb(68, 68, 68);
+                        }
+                    }
+                }
+            }
+        }
+        .experienceAndEducation:after {
+            content: " ";
+            visibility: hidden;
+            display: block;
+            height: 0;
+            clear: both;
+         }
+        .skills {
+            display: block;
+            h3{
+                font-weight: 600;
+                margin-bottom: 20px;
+            }
+            ul{
+                padding: 0;
+                li{
+                    display: inline-block;
+                    margin: 15px 20px 15px 0;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,119 @@
+<div class="overlay" (click)="doCancelClick($event)">
+</div>
+<div class="modal">
+    <div class="modal-title">
+        <h2 *ngIf="newInterview">New interview</h2>
+        <h2 *ngIf="!newInterview">Edit interview</h2>
+    </div>
+
+    <div class="modal-body" *ngIf="newInterview">
+        <p>
+            <span class="text">Candidate's name: </span>
+            <span>
+                <input type="text" placeholder="Candidate's Name" #CandidatesName [(ngModel)]="interview.candidate" required="required" autofocus>
+            </span>
+        </p>
+        <p>
+            <span class="text">Position: </span>
+            <span>
+                <input class="positionNumber" [ngClass]="{'error': posNumValid === false}" type="text" placeholder="e.g. 2234" [(ngModel)]="interview.positionNumber"
+                    required="required" (keyup)="checkIfValidNumber($event)">
+                <input class="positionName" type="text" placeholder="Name" [(ngModel)]="interview.positionName" required="required">
+            </span>
+
+        </p>
+        <p>
+            <span class="text">Interview type: </span>
+            <span>
+                <select [(ngModel)]="interview.interviewType" id="type" name="type" #type="ngModel" required="required">
+                    <option *ngFor="let type of types" [value]="type">{{type}}</option>
+                </select>
+            </span>
+        </p>
+        <p>
+            <span class="text">Interview mode: </span>
+            <span>
+                <input name="mode" id="online" ngControl="interviewMode" type="radio" value="online" [(ngModel)]="interview.interviewMode"
+                    required="required">
+                <label class="online" for="online">Online</label>
+                <input name="mode" id="offline" ngControl="interviewMode" type="radio" value="offline" [(ngModel)]="interview.interviewMode"
+                    required="required">
+                <label class="offline" for="offline">Offline</label>
+            </span>
+        </p>
+        <p>
+            <span class="text">Interview date:</span>
+            <span>
+                <input [ngClass]="{'error': dateValid === false}" type="datetime-local" [(ngModel)]="interview.date" placeholder="Interview Date" required="required" (keyup)="checkIfDateIsValid($event)">
+            </span>
+        </p>
+        <p>
+            <span class="text">Interviewer's name: </span>
+            <span>
+                <input type="text" [(ngModel)]="interview.interviewer" placeholder="Interviewer" required="required">
+            </span>
+        </p>
+    </div>
+
+    <div class="modal-body" *ngIf="!newInterview">
+        <p>
+            <span class="text">Change interview status: </span>
+            <span>
+                <select [(ngModel)]="interview.status" id="status" name="status" #status="ngModel" required="required">
+                    <option *ngFor="let status of statuses" [value]="status">{{status}}</option>
+                </select>
+            </span>
+        </p>
+        <p>
+            <span class="text">Candidate's name: </span>
+            <span>
+                <input type="text" value="interview.candidate" [(ngModel)]="interview.candidate" required="required" autofocus>
+            </span>
+        </p>
+        <p>
+            <span class="text">Position: </span>
+            <span>
+                <input class="positionNumber" [ngClass]="{'error': posNumValid === false}" type="text" value="interview.positionNumber" placeholder="e.g. 2234" [(ngModel)]="interview.positionNumber"
+                    required="required" (keyup)="checkIfValidNumber($event)">
+                <input class="positionName" type="text" value="interview.positionName" placeholder="Name" [(ngModel)]="interview.positionName" required="required">
+            </span>
+        </p>
+        <p>
+            <span class="text">Interview type: </span>
+            <span>
+                <select [(ngModel)]="interview.interviewType" id="type" name="type" #type="ngModel" required="required">
+                    <option *ngFor="let type of types" [value]="type">{{type}}</option>
+                </select>
+            </span>
+        </p>
+        <p>
+            <span class="text">Interview mode: </span>
+            <span>
+                <input name="mode" id="online" ngControl="interviewMode" type="radio" value="online" [(ngModel)]="interview.interviewMode"
+                    required="required">
+                <label class="online" for="online">Online</label>
+                <input name="mode" id="offline" ngControl="interviewMode" type="radio" value="offline" [(ngModel)]="interview.interviewMode"
+                    required="required">
+                <label class="offline" for="offline">Offline</label>
+            </span>
+        </p>
+        <p>
+            <span class="text">Interview date: </span>
+            <span>
+                <input [ngClass]="{'error': dateValid === false}" type="datetime-local" [(ngModel)]="interview.date" required="required" (keyup)="checkIfDateIsValid($event)">
+            </span>
+        </p>
+        <p>
+            <span class="text">Interviewer's name: </span>
+            <span>
+                <input type="text" [(ngModel)]="interview.interviewer" required="required">
+            </span>
+        </p>
+    </div>
+
+    <div class="modal-buttons">
+        <div class="button cancel-button" (click)="doCancelClick($event, interview)">Cancel</div>
+        <div class="button save-button" (click)="doSaveClick($event, interview)">Save</div>
+    </div>
+
+</div>

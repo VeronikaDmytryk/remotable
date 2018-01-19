@@ -1,0 +1,95 @@
+@import '../../global';
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 60px;
+    border-bottom: $sectionBorder;
+    width: 100%;
+    background: #fff;
+    z-index: 2;
+    letter-spacing: 0.075em;
+
+    .logo {
+        display: block;
+        float: left;
+        width: 44px;
+        height: 44px;
+        margin: 6px 0 6px 10px;
+        background: url("./assets/remotable.png") center no-repeat;
+        background-size: contain;
+    }
+    nav ul{
+        margin-left: 50px;
+        padding: 0;
+        font-size: 16px;
+        line-height: 60px;
+        margin-right: 27%;
+        float: left;
+        color: $lightTextColor;
+        li{
+            display: inline-block;
+            margin-right: 30px;
+            a, a:focus, a:active, a:hover{
+                outline: none;
+                color: inherit;
+                text-decoration: none;
+            }
+        }
+        li:last-child {
+            margin-right: 0;
+        }
+        li.active{
+            color: #424242;
+            border-bottom: 1.5px solid #00aedc;
+        }
+    }
+    .search {
+        width: 18%;
+        float: left;
+        input{
+            width: 100%;
+            height: 44px;
+            border: $inputBorder;
+            border-radius: $borderRadius;
+            font-size: 16px;
+            padding: 0 23px;
+            color: $inputColor;
+            margin: 8px auto;
+        }
+        input:focus {
+            outline: none;
+        }
+    }
+    .left-menu {
+        display: block;
+        float: right;
+        .notifications {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            margin: 8px 10px 12px 10px;
+            background: url("./assets/notifications.png") center no-repeat;
+            background-size: contain;
+        }
+        .avatar {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin: 7px 10px 13px 10px;
+            background: url("http://4.bp.blogspot.com/-n1m7cK58YTk/VkSuc4K49lI/AAAAAAAADwo/A9L6kEgWn8s/s1600/promo2.jpg") center no-repeat;
+            background-size: cover;
+            box-shadow: $boxShadow;
+        }
+        .settings-btn {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            margin: 16px;
+            background: url("./assets/button.png") center no-repeat;
+            background-size: contain;
+        }
+    }
+}

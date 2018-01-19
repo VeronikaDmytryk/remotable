@@ -1,0 +1,88 @@
+<div class="reports">
+    <h2>Reports</h2>
+    <div class="cards-content">
+        <ul class="cards">
+            <li class="card">
+                <span *ngIf="!numOfInterviews"><img src="./assets/loader.gif" alt="loading..."></span>
+                <span *ngIf="numOfInterviews">{{numOfInterviews}}</span>
+                Total number of interviews
+            </li>
+            <li class="card">
+                <span *ngIf="!numOfCandidates"><img src="./assets/loader.gif" alt="loading..."></span>
+                <span *ngIf="numOfCandidates">{{numOfCandidates}}</span>
+                Total number of candidates
+            </li>
+
+            <li class="card">
+                <span *ngIf="!avaregeScore"><img src="./assets/loader.gif" alt="loading..."></span>
+                <span *ngIf="avaregeScore">{{avaregeScore}}</span>
+                Avarage candidate score
+            </li>
+            <li class="card">
+                <span *ngIf="!scheduledInterviews"><img src="./assets/loader.gif" alt="loading..."></span>
+                <span *ngIf="scheduledInterviews">{{scheduledInterviews}}</span>
+                Interviews scheduled for today
+            </li>
+        </ul>
+
+    </div>
+    <div class="charts-content">
+        <div class="tabs">
+            <div class="tab" [ngClass]="{'active': showData.showStatusReport}" (click)="showReportbyStatus('status')">By status</div>
+            <div class="tab" [ngClass]="{'active': showData.showScoreReport}" (click)="showReportbyStatus('score')">By score</div>
+            <div class="tab" [ngClass]="{'active': showData.showInterviewModeReport}" (click)="showReportbyStatus('interviewMode')">By interview mode</div>
+            <div class="tab" [ngClass]="{'active': showData.showInterviewTypeReport}" (click)="showReportbyStatus('interviewType')">By interview type</div>
+        </div>
+
+        <div class="charts" style="display: block; position: relative; width: 45%; left: 0; right: 0; margin: 0 auto;">
+            <canvas *ngIf="statusDataReady && showData.showStatusReport" baseChart [colors]="doughnutChartColors" [data]="pieChartData1"
+                [labels]="pieChartLabels1" [options]="options" [chartType]="pieChartType" (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+
+            <canvas *ngIf="statusDataReady && showData.showScoreReport" baseChart [colors]="doughnutChartColors" [data]="pieChartData2"
+                [labels]="pieChartLabels2" [options]="options" [chartType]="pieChartType" (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+
+            <canvas *ngIf="statusDataReady && showData.showInterviewModeReport" baseChart [colors]="doughnutChartColors" [data]="pieChartData3"
+                [labels]="pieChartLabels3" [options]="options" [chartType]="pieChartType" (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+
+            <canvas *ngIf="statusDataReady && showData.showInterviewTypeReport" baseChart [colors]="doughnutChartColors" [data]="pieChartData4"
+                [labels]="pieChartLabels4" [options]="options" [chartType]="pieChartType" (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+        </div>
+
+        <div class="info">
+            <div *ngIf="showData.showStatusReport">
+                <p>Remotable is an interview platform which has four different statuses for interviews: Scheduled, In progress,
+                    Completed and Canceled.
+                </p>
+                <p>Now interviewers and resource managers can manage them in an easy way.</p>
+            </div>
+
+            <div *ngIf="showData.showScoreReport">
+                <p>This interview platform has five grades to score candidate: </p>
+                <ul>
+                    <li>1 - "No hire"</li>
+                    <li>2 - "Maybe"</li>
+                    <li>3 - "Good candidate"</li>
+                    <li>4 - "Strong Hire"</li>
+                    <li>5 - "Rock Star"</li>
+                </ul>
+                <p>Now interviewers and resource managers can be sure they are hiring a good candidate.</p>
+            </div>
+
+            <div *ngIf="showData.showInterviewModeReport">
+                <p>For your convinience, now, you can track all your interviews (online and offline) in one place.</p>
+                <p>Hiring managers love it!.</p>
+            </div>
+
+            <div *ngIf="showData.showInterviewTypeReport">
+                <p>Remotable has two available types of interviews: General and Technical.</p>
+                <p>Best code editor with high quality video chat will allow you to hear and see your candidate perfectly.</p>
+                <p>More new good features will be implemented soon.</p>
+            </div>
+        </div>
+
+    </div>
+</div>

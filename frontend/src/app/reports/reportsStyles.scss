@@ -1,0 +1,102 @@
+@import '../../global';
+
+.reports {
+    min-width: 1200px;
+    width: auto!important;
+    overflow-y: hidden;
+    margin-left: 70px;
+    margin-top: 60px;
+    padding: 35px 35px;
+    margin-bottom: 30px;
+
+    h2{
+        display: inline-block;
+        color: $textColor;
+        font-size: 26px;
+        margin: 0 30px 0 -5px;
+        letter-spacing: 0.075em;
+    }
+
+    .charts-content {
+        background: #fff;
+        width: 100%;
+        display: flex;
+        box-shadow: $boxShadowLight;
+        border-radius: $borderRadius;
+        .tabs {
+            display: flex;
+            flex-direction: column;
+            border-right: $reportDividerBorder;
+            .tab{
+                color: #424242;
+                display: inline-block;
+                background: $reportTabBackground;
+                border-bottom: $reportTabsBorder;
+                padding: 20px 50px;
+                text-align: center;
+                cursor: pointer;
+                font-size: 16px;
+            }
+            .tab.active{
+                background: #fff;
+            }
+        }
+        .info {
+            display: block;
+            width: 30%;
+            padding: 40px;
+            border-left: $reportDividerBorder;
+            p{
+                color: $lightTextColor;
+                font-size: 15px;
+                line-height: 25px;
+            }
+            ul {
+                padding: 0;
+                li{
+                    display: block;
+                    color: $textColor;
+                    font-size: 15px;
+                    line-height: 25px;
+                }
+            }
+        }
+        .charts{
+            padding: 50px 0;
+        }
+    }
+
+    .cards-content{
+        margin: 30px auto;
+        .cards {
+            display: flex;
+            justify-content: space-between;
+            padding: 0;
+            .card{
+                color: $lightTextColor;
+                width: 22%;
+                font-size: 16px;
+                min-width: 250px;
+                width: auto!important;
+                background: #fff;
+                box-shadow: $boxShadowLight;
+                border-radius: $borderRadius;
+                text-align: center;
+                display: block;
+                padding: 30px;
+                span{
+                    margin-bottom: 10px;
+                    font-weight: 700;
+                    color: $blue;
+                    display: block;
+                    font-size: 25px;
+                    img{
+                        width: 30px;
+                        height: 30px;
+                    }
+                }
+            }
+        } 
+    }
+}
+

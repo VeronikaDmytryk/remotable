@@ -1,0 +1,72 @@
+[
+    {
+        "id": 1,
+        "status": "Scheduled",
+        "candidate": "Luke Skywalker",
+        "candidateId": 1,
+        "positionNumber": 552,
+        "positionName": "Last Jedi",
+        "interviewType": "Technical",
+        "interviewMode": "online",
+        "date": "2018-01-13T14:32",
+        "interviewer": "Yoda",
+        "score": "",
+        "creator": "Amidala"
+    },
+    {
+        "id": 2,
+        "status": "In Progress",
+        "candidate": "Kylo Ren",
+        "candidateId": 2,
+        "positionNumber": 2832,
+        "positionName": "Supreme Leader",
+        "interviewType": "General",
+        "interviewMode": "offline",
+        "date": "2018-12-11T14:32",
+        "interviewer": "Han Solo",
+        "score": 3,
+        "creator": "Leia Organa"
+    },
+    {
+        "id": 3,
+        "status": "In Progress",
+        "candidate": "Leia Organa",
+        "candidateId": 3,
+        "positionNumber": 1334,
+        "positionName": "Housekeeper",
+        "interviewType": "Technical",
+        "interviewMode": "online",
+        "date": "2018-04-06T14:32",
+        "interviewer": "Jabba the Hutt",
+        "score": 4,
+        "creator": "Rotta the Huttlet"
+    },
+    {
+        "id": 4,
+        "status": "Canceled",
+        "candidate": "Rey Unknown",
+        "candidateId": 4,
+        "positionNumber": 1253,
+        "positionName": "Jr. Jedi",
+        "interviewType": "General",
+        "interviewMode": "offline",
+        "date": "2018-09-13T10:30",
+        "interviewer": "Luke Skywalker",
+        "score": "",
+        "creator": "Leia Organa"
+    },
+    {
+        "id": 5,
+        "status": "Completed",
+        "candidate": "Finn FN-2187",
+        "candidateId": 5,
+        "positionNumber": 1213,
+        "positionName": "Rebel",
+        "interviewType": "Technical",
+        "interviewMode": "online",
+        "date": "2018-07-11T12:20",
+        "interviewer": "Poe Dameron",
+        "score": 4,
+        "creator": "Chewbacca"
+    }
+]

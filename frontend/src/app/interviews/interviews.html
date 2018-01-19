@@ -1,0 +1,120 @@
+<section class="main-content">
+    <h2>Interviews</h2>
+    <div class="add-new-btn" (click)="addClick('Scheduled', '', 'Veronika Dmytryk')">+ Add new</div>
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th style="width: 120px" scope="col">
+                    <div class="selectParent">
+                        <select id="status" name="status" #statusSelect required="required" (change)="changeFilterValues('status', statusSelect.value)">
+                            <option value="null" selected disabled hidden>Status</option>
+                            <option value="">All</option>
+                            <option *ngFor="let status of statuses" [value]="status">{{status}}</option>
+                        </select>
+                        <i class="fa fa-filter"></i>
+                    </div>
+                </th>
+
+                <th style="width: 200px" scope="col" *ngIf="!searchFields.candidate" (click)="searchClick('candidate')">Candidate
+                    <i class="filter-icon fa fa-search"></i>
+                </th>
+                <th style="width: 200px" scope="col" *ngIf="searchFields.candidate">
+                    <div class="inputField">
+                        <input type="text" autofocus class="tableSearchInput" placeholder="Candidate's Name" (input)="changeFilterValues('candidate', $event.target.value)">
+                        <i class="filter-icon fa fa-close" (click)="searchFields.candidate = false; removeFromFilterValues('candidate')"></i>
+                    </div>
+                </th>
+
+                <th style="width: 240px" scope="col" *ngIf="!searchFields.position" (click)="searchClick('position')">Position
+                    <i class="filter-icon fa fa-search"></i>
+                </th>
+                <th style="width: 240px" scope="col" *ngIf="searchFields.position">
+                    <div class="inputField">
+                        <input type="text" autofocus class="tableSearchInput" placeholder="Position Name or Number" (input)="changeFilterValues('position', $event.target.value)">
+                        <i class="filter-icon fa fa-close" (click)="searchFields.position = false; removeFromFilterValues('position')"></i>
+                    </div>
+                </th>
+
+                <th style="width: 100px" scope="col">
+                    <div class="selectParent">
+                        <select id="type" name="type" #type required="required" (change)="changeFilterValues('interviewType', type.value)">
+                            <option value="null" selected disabled hidden>Type</option>
+                            <option value="">All</option>
+                            <option *ngFor="let type of types" [value]="type">{{type}}</option>
+                        </select>
+                        <i class="fa fa-filter"></i>
+                    </div>
+                </th>
+
+                <th style="width: 60px" scope="col">
+                    <i class="fa fa-laptop" [style.color]="interviewMode=='online'? 'rgb(49, 49, 49)' : 'rgb(118, 118, 118)'" (click)="interviewModeClick('online')"></i>
+                    <span> | </span>
+                    <i class="fa fa-user" [style.color]="interviewMode=='offline'? 'rgb(49, 49, 49)' : 'rgb(118, 118, 118)'" (click)="interviewModeClick('offline')"></i>
+                </th>
+
+                <th style="width: 180px" scope="col" (click)="sort('date')">Date
+                    <i class="filter-icon fa" [ngClass]="{'fa-sort': orderValues['date'] == null, 
+                    'fa-sort-asc': orderValues['date'] == '1', 
+                    'fa-sort-desc': orderValues['date'] == '-1'}"></i>
+                </th>
+
+                <th style="width: 200px" scope="col" *ngIf="!searchFields.interviewer" (click)="searchClick('interviewer')">Interviewer
+                    <i class="filter-icon fa fa-search"></i>
+                </th>
+                <th style="width: 200px" scope="col" *ngIf="searchFields.interviewer">
+                    <div class="inputField">
+                        <input type="text" autofocus class="tableSearchInput" placeholder="Interviewer's Name" (input)="changeFilterValues('interviewer', $event.target.value)">
+                        <i class="filter-icon fa fa-close" (click)="searchFields.interviewer = false; removeFromFilterValues('interviewer')"></i>
+                    </div>
+                </th>
+
+                <th style="width: 85px" scope="col" (click)="sort('score')">Score
+                    <i class="filter-icon fa" [ngClass]="{'fa-sort': orderValues['score'] == null, 
+                    'fa-sort-asc': orderValues['score'] == '1', 
+                    'fa-sort-desc': orderValues['score'] == '-1'}"></i>
+                </th>
+
+                <th style="width: 200px" scope="col" *ngIf="!searchFields.creator" (click)="searchClick('creator')">Creator
+                    <i class="filter-icon fa fa-search"></i>
+                </th>
+                <th style="width: 200px" scope="col" *ngIf="searchFields.creator">
+                    <div class="inputField">
+                        <input type="text" autofocus class="tableSearchInput" placeholder="Creator's Name" (input)="changeFilterValues('creator', $event.target.value)">
+                        <i class="filter-icon fa fa-close" (click)="searchFields.creator = false; removeFromFilterValues('creator')"></i>
+                    </div>
+                </th>
+
+                <th style="width: 30px" scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let interview of interviews | interviewsPipe: filterValues | orderBy : orderValues">
+                <td>
+                    <span [style.backgroundColor]="getStyle(interview.status)" class="status">{{interview.status}}</span>
+                </td>
+                <td>
+                    <a href="#" routerLink="../candidates/{{interview.candidateId}}">{{interview.candidate}}</a>
+                </td>
+                <td>{{interview.positionNumber}} | {{interview.positionName}}</td>
+                <td>{{interview.interviewType}}</td>
+                <td *ngIf="interview.interviewMode=='online'">
+                    <i class="fa fa-laptop"></i>
+                </td>
+                <td *ngIf="interview.interviewMode=='offline'">
+                    <i class="fa fa-user"></i>
+                </td>
+                <td *ngIf="supportedBrowser">{{interview.date | date:'d MMM, y hh:mm a'}}</td>
+                <td *ngIf="!supportedBrowser">{{interview.date}}</td>
+                <td>{{interview.interviewer}}</td>
+                <td>{{interview.score}}</td>
+                <td>{{interview.creator}}</td>
+                <td>
+                    <i class="fa fa-edit" (click)="editClick(interview._id)"></i>
+                    <i class="fa fa-trash" (click)="deleteClick(interview)"></i>
+                </td>
+                <modal *ngIf="openmodal" [statuses]="statuses" [types]="types" [interview]="currentInterview" [newInterview]="newInterview"
+                    (onCancelClick)="cancelClick($event)" (onSaveClick)="saveClick($event, interview)"></modal>
+            </tr>
+        </tbody>
+    </table>
+</section>

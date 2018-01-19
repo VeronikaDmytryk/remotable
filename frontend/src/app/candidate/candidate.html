@@ -1,0 +1,55 @@
+<div class="candidate-page" *ngIf="candidate">
+    <div class="button-menu">
+        <div class="back-button" [routerLink]="['/interviews']"><i class="fa fa-angle-left"></i> Back</div>
+    </div>
+    <div class="left-section">
+        <p class="photo">
+            <img src={{candidate.photo}} alt="Candidate's photo">
+        </p>
+        <div class="links">
+            <a *ngIf="candidate.links.linkedin" href={{candidate.links.linkedin}} target="_blank">
+                <i class="fa fa-linkedin-square"></i> LinkedIn</a>
+            <a *ngIf="candidate.links.github" href={{candidate.links.github}} target="_blank">
+                <i class="fa fa-github-square"></i>GitHub</a>
+            <a *ngIf="candidate.links.codepen" href={{candidate.links.codepen}} target="_blank">
+                <i class="fa fa-codepen"></i>Codepen</a>
+        </div>
+    </div>
+
+    <div class="main-info">
+        <h2 class="candidateName">{{candidate.name}}</h2>
+        <p class="position">
+            <b>{{candidate.currentPosition}} at {{candidate.currentCompany}}</b>
+        </p>
+        <p class="location">{{candidate.city}}
+            <span *ngIf="candidate.state">,{{candidate.state}}</span>, {{candidate.country}}</p>
+        <hr>
+        <div class="experienceAndEducation">
+            <div class="experience" *ngIf="candidate.experience">
+                <h3>Expierience</h3>
+                <ul>
+                    <li *ngFor="let job of candidate.experience">
+                        <span class="previousPosition">{{job.occupation}}</span>
+                        <span>{{job.company}}</span>
+                        <span>{{job.period}}</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="education" *ngIf="candidate.education">
+                <h3>Education</h3>
+                <ul>
+                    <li *ngFor="let college of candidate.education"><span class="collegeName">{{college.college}}</span> <span>{{college.degree}} in {{college.field}}</span><span class="year">{{college.years}}</span></li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <div class="skills" *ngIf="candidate.skills">
+            <h3>Skills</h3>
+            <div class="candidate">
+                <ul>
+                    <li *ngFor="let skill of candidate.skills">{{skill}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

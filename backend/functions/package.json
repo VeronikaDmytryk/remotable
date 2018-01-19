@@ -1,0 +1,19 @@
+{
+  "name": "remotable",
+  "version": "1.0.0",
+  "description": "An interview management system stores data of interviews and candidates in a MongoDB.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/index.js",
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "firebase-admin": "^5.8.0",
+    "firebase-functions": "^0.8.0",
+    "mongodb": "^2.2.32"
+  },
+  "author": "Veronika Dmytryk",
+  "license": "ISC"
+}

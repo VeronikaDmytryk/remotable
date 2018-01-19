@@ -1,0 +1,32 @@
+@import '../../global';
+
+aside {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 100vh;
+    padding-top: 67px;
+    width: auto;
+    z-index: 1;
+    border-right: $sectionBorder;
+    background: #fff;
+    ul{
+        padding: 0;
+        margin-top: 35px;
+        li{
+            display: block;
+            padding: 0 25px;
+            font-size: 16px;
+            line-height: 45px;
+            color: $lightTextColor;
+            cursor: pointer;
+        }
+        li.active {
+            color: $blue;
+        }
+        li.not-active {
+            color: $unacticeElementColor;
+            cursor: unset;
+        }
+    }
+}
